@@ -23,7 +23,7 @@ jobs:
           go-version: '1.21'  # 指定 Go 版本
 
       - name: Initialize Go module
-        run: go mod init github.com/your-username/your-repo  # 初始化 Go 模块
+        run: go mod init github.com/prasmussen/gdrive  # 初始化 Go 模块
 
       - name: Download dependencies
         run: go mod tidy  # 下载依赖
