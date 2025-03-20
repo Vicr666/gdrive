@@ -1,4 +1,4 @@
-name: Go Build
+name: Build gdrive
 
 on:
   push:
@@ -22,14 +22,23 @@ jobs:
         with:
           go-version: '1.21'  # 指定 Go 版本
 
-      - name: Initialize Go module
-        run: go mod init github.com/prasmussen/gdrive  # 初始化 Go 模块
+      - name: Build gdrive
+        run: |
+          # 克隆 gdrive 项目
+          git clone https://github.com/prasmussen/gdrive.git
+          cd gdrive
 
-      - name: Download dependencies
-        run: go mod tidy  # 下载依赖
+          # 初始化 Go 模块
+          go mod init github.com/prasmussen/gdrive
 
-      - name: Build
-        run: go build -v .  # 编译项目
+          # 下载依赖
+          go mod tidy
 
-      - name: Run tests
-        run: go test -v ./...  # 运行测试（如果有测试）
+          # 编译项目
+          go build -v -o gdrive .
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v3  # 上传构建产物
+        with:
+          name: gdrive
+          path: gdrive/gdrive  # 上传编译后的二进制文件
