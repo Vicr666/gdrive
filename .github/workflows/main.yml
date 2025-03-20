@@ -22,5 +22,14 @@ jobs:
         with:
           go-version: '1.21'  # 指定 Go 版本
 
+      - name: Initialize Go module
+        run: go mod init github.com/your-username/your-repo  # 初始化 Go 模块
+
+      - name: Download dependencies
+        run: go mod tidy  # 下载依赖
+
       - name: Build
         run: go build -v .  # 编译项目
+
+      - name: Run tests
+        run: go test -v ./...  # 运行测试（如果有测试）
