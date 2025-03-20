@@ -38,7 +38,7 @@ jobs:
           go build -v -o gdrive .
 
       - name: Upload artifact
-        uses: actions/upload-artifact@v3  # 上传构建产物
+        uses: actions/upload-artifact@v4  # 使用 v4 版本
         with:
           name: gdrive
           path: gdrive/gdrive  # 上传编译后的二进制文件
