@@ -3,10 +3,10 @@ name: Go Build
 on:
   push:
     branches:
-      - main  # 触发工作流的分支
+      - master  # 触发工作流的分支
   pull_request:
     branches:
-      - main
+      - master
 
 jobs:
   build:
